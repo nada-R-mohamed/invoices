@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,8 @@ use App\Http\Controllers\AdminController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/{page}',[AdminController::class,'index']);
 
+
+Auth::routes(['register'=>false]);
+Route::get('/{page}',[AdminController::class,'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
